@@ -1,0 +1,6 @@
+Revision history for Perl extension Murmilad::Panda.
+
+0.01  Fri Oct 25 17:09:11 2024
+	- original version; created by h2xs 1.23 with options
+		-AX -n Murmilad::Panda
+
