@@ -69,6 +69,8 @@ sub execute {
 
 execute( handler => 'Murmilad::Panda_1_1' );
 execute( handler => 'Murmilad::Panda_1_2' );
+execute( handler => 'Murmilad::Panda_2_Accessors' );
+execute( handler => 'Murmilad::Panda_3_Accessors_Fast' );
 
 # Preloaded methods go here.
 

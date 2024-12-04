@@ -9,7 +9,7 @@ sub prepare_values {
 
 sub check {
     my $self = shift;
-    return $self->legs() != 11;
+    return $self->{legs} != 11;
 }
 
 sub new {
@@ -26,7 +26,13 @@ sub set_colour {
     $self->{colour} = shift;
 }
 
-sub init {
+sub set_legs {
+    my $self = shift;
+
+    $self->{legs} = shift;
+}
+
+sub create {
     $class = shift;
     return $class->new( { legs => 4, colour => "brown" } );
 }
@@ -34,6 +40,6 @@ sub init {
 sub run {
     my $self = shift;
     my $legs = shift;
-    $self->setLegs($legs);
+    $self->set_legs($legs);
 }
 1;

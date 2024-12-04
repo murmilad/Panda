@@ -19,11 +19,6 @@ sub clean_hash_equal_values {
     return { reverse %result };
 }
 
-sub init {
-    my $class = shift;
-    return $class->new();
-}
-
 sub prepare_values {
     my $self = shift;
 

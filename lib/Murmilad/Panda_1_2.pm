@@ -28,11 +28,6 @@ sub clean_hash_equal_values {
     return $result;
 }
 
-sub init {
-    my $class = shift;
-    return $class->new();
-}
-
 sub prepare_values {
     my $self = shift;
 
