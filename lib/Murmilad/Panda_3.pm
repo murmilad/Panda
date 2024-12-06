@@ -15,7 +15,7 @@ sub func_state {
 }
 
 sub func_my {
-    my $var;
+    my $var if $var == 3;
     $var++;
     say "my=$var";
 }
@@ -29,4 +29,5 @@ sub func_local {
 func_state() for 1 .. 10;
 func_our()   for 1 .. 10;
 func_my()    for 1 .. 10;
+func_our()   for 1 .. 10;
 func_local() for 1 .. 10;
