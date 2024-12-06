@@ -5,10 +5,12 @@ use strict;
 use warnings;
 use Data::Dumper;
 
-use Murmilad::Panda_1_2;
-use Murmilad::Panda_1_1;
-use Murmilad::Panda_2_Accessors;
-use Murmilad::Panda_3_Accessors_Fast;
+use Murmilad::Panda_1::Faster;
+use Murmilad::Panda_1::Slower;
+use Murmilad::Panda_2::Native;
+use Murmilad::Panda_2::Accessors_Fast;
+use Murmilad::Panda_2::Accessors_Faster;
+use Murmilad::Panda_2::Moose;
 
 use Time::HiRes qw(time);
 
@@ -47,7 +49,7 @@ sub execute {
 
     my $values = [];
 
-    for ( 1 .. 10000 ) {
+    for ( 1 .. 1000 ) {
         push( @{$values}, $object->prepare_values() );
     }
 
@@ -59,18 +61,18 @@ sub execute {
     print "[$handler] call time:" . ( $end_time - $begin_time ) . "\n";
 
     foreach ( @{$values} ) {
-        $object->run($_);
-
         print "[$handler] error with object:" . Dumper($object) . "\n"
-          unless $object->check($_);
+          unless $object->check( $object->run($_) );
     }
 
 }
 
-execute( handler => 'Murmilad::Panda_1_1' );
-execute( handler => 'Murmilad::Panda_1_2' );
-execute( handler => 'Murmilad::Panda_2_Accessors' );
-execute( handler => 'Murmilad::Panda_3_Accessors_Fast' );
+execute( handler => 'Murmilad::Panda_1::Faster' );
+execute( handler => 'Murmilad::Panda_1::Slower' );
+execute( handler => 'Murmilad::Panda_2::Native' );
+execute( handler => 'Murmilad::Panda_2::Accessors_Fast' );
+execute( handler => 'Murmilad::Panda_2::Accessors_Faster' );
+execute( handler => 'Murmilad::Panda_2::Moose' );
 
 # Preloaded methods go here.
 
